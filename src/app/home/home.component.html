@@ -1,0 +1,25 @@
+<div class="content-top">
+
+	<ul class="toolbar list-unstyled">
+
+    	<li>
+      		<a routerLink="/addblog">Add Blog</a>
+    	</li>
+   
+  	</ul>
+
+</div>
+
+
+
+<div class="card-columns">
+<div class="card text-center " style="width: 20rem;" *ngFor="let post of posts">
+  <img class="card-img-top " src="{{ post.path }}" alt="">
+  <div class="card-block">
+    <h4 class="card-title">{{ post.title }}</h4>
+    <p class="card-text">{{ post.desc }}</p>
+   
+  </div>
+</div>
+</div>
+

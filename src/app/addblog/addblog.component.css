@@ -1,0 +1,14 @@
+.content-top {
+  padding-top: 70px;
+  padding-bottom: 27px;
+  padding-right: 27px;
+
+}
+.toolbar {
+  float: right;
+}
+
+.form {
+	margin: auto;
+	width:500px;
+}
