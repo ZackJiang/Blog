@@ -15,16 +15,17 @@ router.get('/posts', (req, res) => {
   // Get posts from the mock api
   // This should ideally be replaced with a service that connects to MongoDB
  
-  console.log("Posts!!");
+    console.log("Posts!!");
 
-  axios.get(`${API}/posts`)
+    /*
+    axios.get(`${API}/posts`)
     .then(posts => {
       res.status(200).json(posts.data);
     })
     .catch(error => {
       res.status(500).send(error)
     });
-
+    */
 
 
 });
@@ -32,6 +33,8 @@ router.get('/posts', (req, res) => {
 router.post('/addblog', (req, res) => {
 
     console.log("AddBlog!!");
+    console.log(req.body);
+    //console.log(req.body.country);
 
 });
 /*
