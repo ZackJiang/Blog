@@ -19,7 +19,8 @@ export class AddblogComponent implements OnInit {
     { 
             this.myForm = fb.group({  
               'country': ['', Validators.required], 
-              'description': ['', Validators.required]  
+              'description': ['', Validators.required],
+              'img': [''],  
             });  
             this.country = this.myForm.controls['country'];  
             this.description = this.myForm.controls['description'];  
@@ -27,12 +28,12 @@ export class AddblogComponent implements OnInit {
 
     ngOnInit() {}
 
-    onSubmit(info: string): void {  
+    onSubmit(blog: string): void {  
 
-        console.log('you submitted value:', info);  
-        this.postsService.addPost(info);
-        location.reload();
+        console.log('you submitted value:', blog);  
+        this.postsService.addBlog(blog);
+        location.href = '/home';
     }
- 
+
 
 }

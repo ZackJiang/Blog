@@ -1,0 +1,44 @@
+<div class="content-top">
+
+	<ul class="toolbar list-unstyled">
+
+    <li>
+      	<a routerLink="/home">Back</a>
+    </li>
+   
+  </ul>
+
+</div>
+
+
+
+
+
+
+<div *ngIf="view">
+	<form class="form" [formGroup]="myForm"  (ngSubmit)="onSubmit(myForm.value)">
+
+
+    	<div class="form-group">
+
+			<input type="text" class="form-control" id="country" 
+        	[formControl]="_id" hidden>
+
+        	<label for="country">Country :</label>
+        	<input type="text" class="form-control" id="country" 
+        	[formControl]="country" >
+        	<label for="description">Description :</label>
+        	<input type="text" class="form-control" id="description"
+        	[formControl]="description">
+
+    	</div>
+
+    	<div *ngIf="!myForm.valid">
+       		<input class="btn btn-primary" type="submit" value="Update" disabled="">
+    	</div>
+     	<div *ngIf="myForm.valid">
+        	<input class="btn btn-primary" type="submit" value="Update">
+    	</div>
+   
+	</form>
+<div>

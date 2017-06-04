@@ -12,6 +12,7 @@ import { NgaModule } from './theme/nga.module';
 
 import { PostsService } from './posts.service';
 import { AddblogComponent } from './addblog/addblog.component';
+import { ViewblogComponent } from './viewblog/viewblog.component';
 
 
 // Define the routes
@@ -25,9 +26,13 @@ const ROUTES = [
     path: 'home',
     component: HomeComponent
   },
-   {
+  {
     path: 'addblog',
     component: AddblogComponent
+  },
+  {
+    path: 'viewblog/:id',
+    component: ViewblogComponent
   }
 ];
 
@@ -37,7 +42,9 @@ const ROUTES = [
   declarations: [
     AppComponent,
     HomeComponent,
-    AddblogComponent
+    AddblogComponent,
+    ViewblogComponent,
+    ViewblogComponent
   ],
   imports: [
     BrowserModule,

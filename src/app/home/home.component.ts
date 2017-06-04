@@ -8,24 +8,47 @@ import { PostsService } from '../posts.service';
 })
 export class HomeComponent implements OnInit {
 
-  posts: any = [
-    {title:"Norway",desc:"Travelling in Norway",path:"../../../../assets/img/city/norway.jpg"},
-    {title:"Iceland",desc:"Travelling in Iceland",path:"../../../../assets/img/city/iceland.jpg"},
-    {title:"UK",desc:"Travelling in UK",path:"../../../../assets/img/city/london.jpg"},
-    {title:"Germany",desc:"Travelling in Germany",path:"../../../../assets/img/city/germany.jpg"},
-    {title:"Singapore", desc:"Travelling in Singapore",path:"../../../../assets/img/city/singapore.jpg"},
-    {title:"Turkey", desc:"Travelling in Turkey",path:"../../../../assets/img/city/turkey.jpg"},
+  blogs: any;
+  /*
+  blogs: any = [
+    {country:"Norway",desc:"Travelling in Norway",path:"../../../../assets/img/city/norway.jpg"},
+    {country:"Iceland",desc:"Travelling in Iceland",path:"../../../../assets/img/city/iceland.jpg"},
+    {country:"UK",desc:"Travelling in UK",path:"../../../../assets/img/city/london.jpg"},
+    {country:"Germany",desc:"Travelling in Germany",path:"../../../../assets/img/city/germany.jpg"},
+    {country:"Singapore", desc:"Travelling in Singapore",path:"../../../../assets/img/city/singapore.jpg"},
+    {country:"Turkey", desc:"Travelling in Turkey",path:"../../../../assets/img/city/turkey.jpg"},
   ];
+  */
   //private postsService: PostsService
-  constructor() { }
+  constructor(private postsService: PostsService) { }
 
   ngOnInit() {
 
-    /*
-	  this.postsService.getAllPosts().subscribe(posts => {
-      this.posts = posts;
-    });
-    */
+   
+	this.postsService.getAllBlogs()
+    				   .subscribe( 
+        					data => {
+            				this.blogs = data.blogs;
+            				//console.log(data);
+
+       				 	}
+    );
+    
   }
+
+  delBlog(id): void {
+
+      //console.log(blog);
+      this.postsService.delBlog(id);
+      location.reload();
+  }
+
+  
+  viewBlog(id): void {
+
+	  location.href = '/viewblog/'+id;
+
+  }
+
 
 }

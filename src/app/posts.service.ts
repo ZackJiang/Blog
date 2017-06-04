@@ -6,34 +6,77 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class PostsService {
 
-  constructor(private http: Http) { }
+    constructor(private http: Http) { }
 
-  // Get all posts from the API
-  getAllPosts() {
+    // Get all posts from the API
+    getAllBlogs() {
   
-      return this.http.get('/api/posts')
-      .map(res => res.json());
-  }
+        return this.http.get('http://localhost:3000/api/blogs')
+                      .map(res => res.json());
+    }
 
 
-  addPost(info) {
+    addBlog(blog: any) {
 	
-      console.log(info);
+        console.log(blog);
 
-      let data = new URLSearchParams();
-      data.append('country', info['country']);
-      data.append('description', info['description']);
+        let data = new URLSearchParams();
+        data.append('country', blog['country']);
+        data.append('description', blog['description']);
 
-      this.http
-      .post('http://localhost:3000/api/addblog', data)
-      .subscribe(
-      data => {
-            console.log('okay');
-      }, error => {
-            console.log(error.json());
-      });
+        this.http
+        .post('http://localhost:3000/api/addblog', data)
+        .subscribe(
+      	    data => {
+                console.log(data);
+      	    }, 
+      	    error => {
+                console.log(error.json());
+      	    }
+        );
 
-  }
+    }
 
+    delBlog(id: number) {
+
+        console.log(id);
+        this.http
+        .delete('http://localhost:3000/api/delblog/'+id)
+        .subscribe(
+            data => {
+                console.log(data);
+            }, 
+            error => {
+                console.log(error.json());
+            }
+        );
+    }
+
+
+    viewBlog(id: number) {
+
+        return this.http.get('http://localhost:3000/api/viewblog/'+id)
+                    .map(res => res.json());
+    }
+
+
+    updateBlog(blog: any) {
+        let id = blog['_id'];
+        let data = new URLSearchParams();
+        data.append('country', blog['country']);
+        data.append('description', blog['description']);
+
+        this.http
+        .put('http://localhost:3000/api/updateblog/'+id, data)
+        .subscribe(
+              data => {
+                console.log(data);
+              }, 
+              error => {
+                console.log(error.json());
+              }
+        );
+
+    }
 
 }

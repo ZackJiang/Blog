@@ -2,11 +2,11 @@
 
 	<ul class="toolbar list-unstyled">
 
-    	   <li>
-      	         <a routerLink="/home">Back</a>
-                </li>
+    <li>
+      	<a routerLink="/home">Back</a>
+    </li>
    
-  	</ul>
+  </ul>
 
 </div>
 
@@ -30,6 +30,13 @@
 
     </div>
 
+<!--
+    <div class="form-group">
+<input type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".pdf,.doc,.docx,.jpg">
+   
+
+    </div>
+-->
     <div *ngIf="!myForm.valid">
         <input class="btn btn-primary" type="submit" value="Add" disabled="">
     </div>
